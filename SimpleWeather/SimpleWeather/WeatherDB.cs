@@ -29,7 +29,7 @@ namespace SimpleWeather
     {
       foreach (KeyValuePair<string, string> Zone in Areas.Zones)
       {
-        Current.Add(Zone.Key, Weather.BLIZZARD);
+        Current.Add(Zone.Key, Weather.CLEAR);
       }
     }
 
