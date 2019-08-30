@@ -1,0 +1,7 @@
+D:\TestServer\server-data\resources\SimpleTime\Server\SimpleTime.Server.net.dll
+D:\TestServer\server-data\resources\SimpleTime\Server\SimpleTime.Server.net.pdb
+D:\SimpleSeries\SimpleTime\SimpleTime\obj\Debug\SimpleTime.csprojAssemblyReference.cache
+D:\SimpleSeries\SimpleTime\SimpleTime\obj\Debug\SimpleTime.csproj.CoreCompileInputs.cache
+D:\SimpleSeries\SimpleTime\SimpleTime\obj\Debug\SimpleTime.csproj.CopyComplete
+D:\SimpleSeries\SimpleTime\SimpleTime\obj\Debug\SimpleTime.Server.net.dll
+D:\SimpleSeries\SimpleTime\SimpleTime\obj\Debug\SimpleTime.Server.net.pdb

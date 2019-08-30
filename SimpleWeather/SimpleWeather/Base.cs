@@ -19,7 +19,6 @@ namespace SimpleWeather
     {
       DB.FromClient(json);
       TriggerClientEvent("SW:ClientUpdateSuccess");
-      Debug.WriteLine("[SimpleWeather]: Recieved New Weather");
     }
 
     public async Task onTick()

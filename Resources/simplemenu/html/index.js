@@ -5,6 +5,7 @@ let loggedIn = false;
 
 $(() => {
   $(".password").focus();
+
   const UpdateZones = newZones => {
     zones = JSON.parse(newZones);
     $("#weatherTableBody").empty();
@@ -16,7 +17,7 @@ $(() => {
         `<tr>
         <td>${zone}</td>
         <td>
-        <select class="custom-select selector" id="${zone}">
+        <select class="custom-select selector" id="${zone.replace(/ /g, "-")}">
           <option selected value="${weather}">${weather}</option>
           ${Weather.map(type => `<option value="${type}">${type}</option>`)}
         </select>
@@ -39,7 +40,7 @@ $(() => {
 
       Object.keys(CurrentArea).forEach(area => {
         CurrentArea[area].forEach(zone => {
-          zones[zone] = $(`#${area}`).val();
+          zones[zone] = $(`#${area.replace(/ /g, "-")}`).val();
         });
       });
 
@@ -53,6 +54,11 @@ $(() => {
     if (zones) {
       if (!editing) UpdateZones(JSON.stringify(zones));
     }
+  });
+
+  $("#timeBtn").click(() => {
+    $(".container").css("display", "none");
+    $("#time").css("display", "flex");
   });
 
   $(".AreaSelector").change(e => {
@@ -91,6 +97,15 @@ $(() => {
           .html("")
           .css("display", "none");
       }, 5000);
+    } else if (event.data.type === "time") {
+      let [hours, minutes, seconds] = event.data.time;
+      if (hours < 10) hours = `0${hours}`;
+      if (minutes < 10) minutes = `0${minutes}`;
+      if (seconds < 10) seconds = `0${seconds}`;
+      $("#clockBtn").html(`${hours}:${minutes}:${seconds}`);
+      $("#freezeTimeBtn").html(
+        !!event.data.frozen ? "Unfreeze Time" : "Freeze Time"
+      );
     }
   });
 
@@ -130,6 +145,74 @@ $(() => {
     );
   });
 
+  $("#changeTimeBtn").click(() => {
+    $.post(
+      "http://simplemenu/ChangeTime",
+      JSON.stringify({
+        hours: $(".hours").val(),
+        minutes: $(".minutes").val(),
+        seconds: $(".seconds").val()
+      }),
+      changed => {
+        if (changed) {
+          $(".alert")
+            .addClass("alert-success")
+            .html("Changed Time")
+            .css("display", "block");
+
+          setTimeout(() => {
+            $(".alert")
+              .removeClass("alert-success")
+              .html("")
+              .css("display", "none");
+          }, 5000);
+        } else {
+          $(".alert")
+            .addClass("alert-danger")
+            .html("Couldn't Set Time")
+            .css("display", "block");
+
+          setTimeout(() => {
+            $(".alert")
+              .removeClass("alert-danger")
+              .html("")
+              .css("display", "none");
+          }, 5000);
+        }
+      }
+    );
+  });
+
+  $("#freezeTimeBtn").click(() => {
+    $.post("http://simplemenu/Freeze", JSON.stringify({}), cb => {
+      if (cb) {
+        $(".alert")
+          .addClass("alert-success")
+          .html("Froze Time")
+          .css("display", "block");
+
+        setTimeout(() => {
+          $(".alert")
+            .removeClass("alert-success")
+            .html("")
+            .css("display", "none");
+        }, 5000);
+      } else {
+        $(".alert")
+          .addClass("alert-danger")
+          .html("Couldn't Freeze Time")
+          .css("display", "block");
+
+        setTimeout(() => {
+          $(".alert")
+            .removeClass("alert-danger")
+            .html("")
+            .css("display", "none");
+        }, 5000);
+      }
+    });
+  });
+
   const close = () => {
     $.post("http://simplemenu/ESCAPE", JSON.stringify({}));
   };
@@ -140,12 +223,12 @@ $(() => {
 
   $(".backBtn").click(() => {
     $("#weather").css("display", "none");
+    $("#time").css("display", "none");
     $(".container").css("display", "flex");
   });
 
   document.onkeyup = event => {
     if (event.keyCode == 27) {
-      console.log("escape");
       close();
     }
   };

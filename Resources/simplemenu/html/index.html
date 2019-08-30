@@ -75,6 +75,17 @@
       display: none;
     }
 
+    .page#time {
+      height: 90vh;
+      flex-flow: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .page#time .clock {
+      padding: 10px 0;
+    }
+
     .page#weather {
       min-width: 100%;
       flex-flow: row;
@@ -166,6 +177,38 @@
 
           </tbody>
         </table>
+      </div>
+    </div>
+
+    <div class="page" id="time">
+      <div class="clock">
+        <button class="btn btn-outline-primary btn-lg btn-block" disabled id="clockBtn">00:00:00</button>
+      </div>
+      <div class="time-options">
+        <div class="change-time">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">Hours</span>
+            </div>
+            <input id="hours" autofocus type="number" class="form-control hours" aria-label="Default"
+              aria-describedby="inputGroup-sizing-default" max="23" min="0">
+
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">Minutes</span>
+            </div>
+            <input id="minutes" autofocus type="number" class="form-control minutes" aria-label="Default"
+              aria-describedby="inputGroup-sizing-default" max="59" min="0">
+
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">Seconds</span>
+            </div>
+            <input id="seconds" autofocus type="number" class="form-control seconds" aria-label="Default"
+              aria-describedby="inputGroup-sizing-default" max="59" min="0">
+          </div>
+          <button class="btn btn-outline-primary btn-block" id="changeTimeBtn">Set</button>
+          <button class="btn btn-outline-primary btn-block" id="freezeTimeBtn">Freeze
+            Time</button>
+        </div>
       </div>
     </div>
 

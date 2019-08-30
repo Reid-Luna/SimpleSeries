@@ -14,9 +14,6 @@ const ParseWeather = FromServer => {
   const [X, Y, Z] = GetEntityCoords(GetPlayerPed(-1));
   const ZONE = GetNameOfZone(X, Y, Z);
   SetWeather(Zones[ZONE]);
-  console.log(
-    `[SimpleWeather]: Setting Weather. Zone: ${ZONE} Weather: ${Zones[ZONE]}`
-  );
 };
 
 onNet("SW:SetWeather", ParseWeather);
