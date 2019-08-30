@@ -36,12 +36,27 @@
       padding: 20px;
     }
 
-    .container {
+    .login-container {
       flex: 1 0;
       display: flex;
       flex-flow: column;
       justify-content: center;
       align-items: center;
+    }
+
+    .container {
+      flex: 1 0;
+      display: none;
+      flex-flow: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .login {
+      display: flex;
+      flex-flow: column;
+      justify-items: center;
+      align-content: center;
     }
 
     .options {
@@ -106,15 +121,27 @@
   <div class="alert">
   </div>
   <div class="fullscreen">
-    <div><button class="btn btn-primary backBtn">
+    <div><button class="btn btn-primary backBtn" disabled>
         <</button> <button class="btn btn-danger closeBtn">X
       </button></div>
+
+    <div class="login-container">
+      <div class="login">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
+          </div>
+          <input id="password" autofocus type="password" class="form-control password" aria-label="Default"
+            aria-describedby="inputGroup-sizing-default">
+        </div>
+        <button class="btn btn-outline-primary btn-block" id="loginBtn">Login</button>
+      </div>
+    </div>
 
     <div class="container">
       <div class="options">
         <button class="btn btn-outline-primary btn-lg btn-block" id="weatherBtn">Weather</button>
-        <button class="btn btn-outline-primary btn-lg btn-block">Time</button>
-        <button class="btn btn-outline-primary btn-lg btn-block">Settings</button>
+        <button class="btn btn-outline-primary btn-lg btn-block" id="timeBtn">Time</button>
       </div>
     </div>
 

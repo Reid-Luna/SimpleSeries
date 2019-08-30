@@ -1,7 +1,10 @@
 let zones;
 let editing = false;
 let CurrentArea = Neighborhoods;
+let loggedIn = false;
+
 $(() => {
+  $(".password").focus();
   const UpdateZones = newZones => {
     zones = JSON.parse(newZones);
     $("#weatherTableBody").empty();
@@ -89,6 +92,42 @@ $(() => {
           .css("display", "none");
       }, 5000);
     }
+  });
+
+  window.addEventListener("keyup", e => {
+    if ($(".password:focus")) {
+      const code = e.keyCode ? e.keyCode : e.which;
+      if (code == 13) {
+        $("#loginBtn").click();
+      }
+    }
+  });
+
+  $("#loginBtn").click(() => {
+    $.post(
+      "http://simplemenu/Login",
+      JSON.stringify({ password: $(".password").val() }),
+      logged => {
+        loggedIn = logged;
+        if (loggedIn) {
+          $(".login-container").remove();
+          $(".container").css("display", "flex");
+          $(".backBtn").attr("disabled", false);
+        } else {
+          $(".alert")
+            .addClass("alert-danger")
+            .html("Password Incorrect")
+            .css("display", "block");
+
+          setTimeout(() => {
+            $(".alert")
+              .removeClass("alert-danger")
+              .html("")
+              .css("display", "none");
+          }, 5000);
+        }
+      }
+    );
   });
 
   const close = () => {

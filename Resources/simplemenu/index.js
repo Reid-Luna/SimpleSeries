@@ -23,6 +23,12 @@ on("__cfx_nui:ChangeWeather", data => {
   // console.log("[SimpleWeather]: Sending Weather");
 });
 
+RegisterNuiCallbackType("Login");
+on("__cfx_nui:Login", (data, cb) => {
+  const password = data["password"];
+  cb(password == "Parker00");
+});
+
 onNet("SW:ClientUpdateSuccess", () => {
   // console.log("[SimpleWeather]: Success");
   SendNuiMessage(
