@@ -1,7 +1,0 @@
-D:\TestServer\server-data\resources\SimpleWeather\Client\SimpleWeather.Client.net.dll
-D:\TestServer\server-data\resources\SimpleWeather\Client\SimpleWeather.Client.net.pdb
-D:\C#\FiveM\SimpleWeather\SimpleWeather.Client\obj\Debug\SimpleWeather.Client.csprojAssemblyReference.cache
-D:\C#\FiveM\SimpleWeather\SimpleWeather.Client\obj\Debug\SimpleWeather.Client.csproj.CoreCompileInputs.cache
-D:\C#\FiveM\SimpleWeather\SimpleWeather.Client\obj\Debug\SimpleWeather.Client.csproj.CopyComplete
-D:\C#\FiveM\SimpleWeather\SimpleWeather.Client\obj\Debug\SimpleWeather.Client.net.dll
-D:\C#\FiveM\SimpleWeather\SimpleWeather.Client\obj\Debug\SimpleWeather.Client.net.pdb

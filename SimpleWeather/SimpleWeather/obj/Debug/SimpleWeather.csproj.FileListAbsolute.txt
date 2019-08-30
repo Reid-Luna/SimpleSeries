@@ -1,0 +1,9 @@
+D:\SimpleSeries\Resources\SimpleWeather\Server\SimpleWeather.net.dll
+D:\SimpleSeries\Resources\SimpleWeather\Server\SimpleWeather.net.pdb
+D:\SimpleSeries\SimpleWeather\SimpleWeather\obj\Debug\SimpleWeather.csprojAssemblyReference.cache
+D:\SimpleSeries\SimpleWeather\SimpleWeather\obj\Debug\SimpleWeather.csproj.CoreCompileInputs.cache
+D:\SimpleSeries\SimpleWeather\SimpleWeather\obj\Debug\SimpleWeather.csproj.CopyComplete
+D:\SimpleSeries\SimpleWeather\SimpleWeather\obj\Debug\SimpleWeather.net.dll
+D:\SimpleSeries\SimpleWeather\SimpleWeather\obj\Debug\SimpleWeather.net.pdb
+D:\TestServer\server-data\resources\SimpleWeather\Server\SimpleWeather.net.dll
+D:\TestServer\server-data\resources\SimpleWeather\Server\SimpleWeather.net.pdb

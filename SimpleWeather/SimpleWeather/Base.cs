@@ -1,48 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using CitizenFX.Core;
+using Newtonsoft.Json;
+using System;
 using System.Threading.Tasks;
-using SimpleWeather.Shared;
-using CitizenFX.Core;
-using static CitizenFX.Core.Native.API;
 
-namespace SimpleWeather.Server
+namespace SimpleWeather
 {
-  class Base : BaseScript
+  public class Base : BaseScript
   {
     WeatherDB DB;
     public Base()
     {
       DB = new WeatherDB();
-
-      EventHandlers.Add(Events.APIREQUESTZONES, new Action(SendZones));
-      EventHandlers.Add(Events.UPDATEZONES, new Action<string>(UpdateZones));
-      EventHandlers.Add(Events.SUCCESSFULUPDATE, new Action(SuccessfulUpdate));
-
+      EventHandlers.Add("SW:ClientChangeWeather", new Action<string>(ClientChangeWeather));
       Tick += onTick;
     }
 
-    public void SuccessfulUpdate()
+    public void ClientChangeWeather(string json)
     {
-      Debug.WriteLine("[SimpleWeather]: Updated Weather");
-    }
-
-    public void UpdateZones(string Incoming)
-    {
-      bool updated = DB.FromAPI(Incoming);
-      if (updated) TriggerEvent(Events.SUCCESSFULUPDATE);
-    }
-
-    public void SendZones()
-    {
-      TriggerEvent(Events.APIRECEIVEZONES, DB.SendToAPI());
+      DB.FromClient(json);
+      TriggerClientEvent("SW:ClientUpdateSuccess");
+      Debug.WriteLine("[SimpleWeather]: Recieved New Weather");
     }
 
     public async Task onTick()
     {
-      TriggerClientEvent(Events.SYNCWEATHER, new object[] { DB.SendToClient() });
-      await Delay(10000);
+      TriggerClientEvent("SW:SetWeather", DB.SendToClient());
+      await Delay(5000);
     }
   }
 }

@@ -1,0 +1,148 @@
+<html>
+
+<head>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+  <script src="areas.js" type="text/javascript"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script src="index.js"></script>
+</head>
+
+<body>
+  <style>
+    html {
+      overflow: hidden;
+      font-family: 'Open Sans', sans-serif;
+      display: none;
+    }
+
+    body {
+      background-color: rgba(65, 79, 93, .99);
+    }
+
+    .fullscreen {
+      width: calc(100vw - 20px);
+      height: calc(100vh - 20px);
+      display: flex;
+      flex-flow: column;
+      padding: 20px;
+    }
+
+    .container {
+      flex: 1 0;
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .options {
+      display: flex;
+      flex-flow: column;
+      justify-items: center;
+      align-content: center;
+    }
+
+    .options button {
+      margin: 10px 0;
+    }
+
+    .page {
+      flex: 1 0;
+      display: none;
+    }
+
+    .page#weather {
+      min-width: 100%;
+      flex-flow: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .page#weather img {
+      height: 100%;
+      width: auto;
+    }
+
+    .page#weather .img {
+      height: 90%;
+    }
+
+    table {
+      text-align: center;
+      width: 100%;
+    }
+
+    td,
+    th {
+      vertical-align: middle !important;
+    }
+
+    .table {
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      justify-content: center;
+      flex-grow: 1;
+      padding: 0 2vw;
+    }
+
+    .alert {
+      display: none;
+      top: 0;
+      position: absolute;
+      width: 100%;
+      text-align: center;
+    }
+  </style>
+  <div class="alert">
+  </div>
+  <div class="fullscreen">
+    <div><button class="btn btn-primary backBtn">
+        <</button> <button class="btn btn-danger closeBtn">X
+      </button></div>
+
+    <div class="container">
+      <div class="options">
+        <button class="btn btn-outline-primary btn-lg btn-block" id="weatherBtn">Weather</button>
+        <button class="btn btn-outline-primary btn-lg btn-block">Time</button>
+        <button class="btn btn-outline-primary btn-lg btn-block">Settings</button>
+      </div>
+    </div>
+
+    <div class="page" id="weather">
+      <div class="img">
+        <img src="Map.png" alt="map">
+      </div>
+      <div class="table">
+        <table id="weatherTable">
+          <thead>
+            <tr>
+              <th><select class="custom-select AreaSelector">
+                  <option selected value="Neighborhoods">Neighborhoods</option>
+                  <option value="Regions">Regions</option>
+                  <option value="All">All</option>
+                </select>
+              </th>
+              <th>Weather</th>
+            </tr>
+          </thead>
+          <tbody class="scroll" id="weatherTableBody">
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</body>
+
+</html>

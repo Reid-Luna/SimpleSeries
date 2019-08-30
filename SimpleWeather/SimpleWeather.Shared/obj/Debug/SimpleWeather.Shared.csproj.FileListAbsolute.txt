@@ -1,6 +1,0 @@
-D:\TestServer\server-data\resources\SimpleWeather\Shared\SimpleWeather.Shared.net.dll
-D:\TestServer\server-data\resources\SimpleWeather\Shared\SimpleWeather.Shared.net.pdb
-D:\C#\FiveM\SimpleWeather\SimpleWeather.Shared\obj\Debug\SimpleWeather.Shared.csprojAssemblyReference.cache
-D:\C#\FiveM\SimpleWeather\SimpleWeather.Shared\obj\Debug\SimpleWeather.Shared.csproj.CoreCompileInputs.cache
-D:\C#\FiveM\SimpleWeather\SimpleWeather.Shared\obj\Debug\SimpleWeather.Shared.net.dll
-D:\C#\FiveM\SimpleWeather\SimpleWeather.Shared\obj\Debug\SimpleWeather.Shared.net.pdb
